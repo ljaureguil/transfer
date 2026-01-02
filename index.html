@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width">
+    <link rel="icon" href="https://cdn.pixabay.com/photo/2023/11/01/12/18/mail-8357450_1280.jpg">
+    <title>Transfer</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+</head>
+
+
+
+
+<style>
+#todo{
+  position:absolute;
+  top:0%;
+  left:0%;
+  width:100%;
+  height:100%;
+  background-color:white;
+  z-index:2000;
+}
+
+</style>
+<div id="todo">
+<textarea id="area" style="width:98%;height:45%;z-index:2000;"></textarea>
+
+<button onclick="sendData()" style="width:40%">Send Data</button>
+<button onclick="window.location.reload()" style="width:40%">Reload Data</button>
+</div>
+
+
+<script>
+
+
+var linklib="https://raw.githubusercontent.com/ljaureguil/My-Library/refs/heads/master/MyLibmin.js";
+var link="https://api.jsonblob.com/019b7f1f-ed12-77d2-b6db-8bd01fcb81ea";//https://api.jsonblob.com/019b5163-39dc-74c4-b292-6655ebb3cf98"
+var GetJson,UpdateJson;
+
+loadDoc = function(url,callback) {
+
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("GET", url, false);
+        xhttp.send();
+       if(callback!=undefined) callback(xhttp.responseText);
+        return xhttp.responseText;
+    }
+
+
+obj={},scr=""
+
+
+loadDoc(linklib,function(data){
+  //alert(data)
+  scr=data;
+  eval(data);
+
+  GetJson(link,function(r){
+area.value=r.cont;
+///
+var fu=UpdateJson;
+//alert(fu)
+UpdateJson=fu;
+//alert(UpdateJson)
+ obj=r;
+
+
+  });
+})
+
+function sendData(){ 
+  eval(scr);
+   alert(UpdateJson)
+ obj.cont=area.value;
+
+
+UpdateJson(link,obj,function(r){
+    alert("all done");
+  });
+}
+
+function   readData(){
+
+  GetJson(link,function(r){
+    obj=r;
+    area.value=obj.cont;
+  });
+} 
+
+
+
+</script>
