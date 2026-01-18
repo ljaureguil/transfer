@@ -13,6 +13,7 @@
 
 <style>
 #todo{
+    text-align:center;
   position:absolute;
   top:0%;
   left:0%;
@@ -21,13 +22,18 @@
   background-color:white;
   z-index:2000;
 }
+button {
+    width:30%;
+    background:rgba(200,255,255)
+}
 
 </style>
 <div id="todo">
-<textarea id="area" style="width:98%;height:45%;z-index:2000;"></textarea>
+<textarea id="area" style="width:98%;height:75%;z-index:2000;"></textarea>
 
-<button onclick="sendData()" style="width:40%">Send Data</button>
-<button onclick="window.location.reload()" style="width:40%">Reload Data</button>
+<button onclick="sendData()" >Send Data</button>
+<button onclick="window.location.reload()" >Reload Data</button>
+<button onclick="area.select();document.execCommand('copy');setTimeout('area.blur()',2000)" >Copy</button>
 </div>
 
 
@@ -88,6 +94,8 @@ function   readData(){
   });
 } 
 
+function copy(){
 
+}
 
 </script>
